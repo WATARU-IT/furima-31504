@@ -2,12 +2,12 @@ FactoryBot.define do
   factory :item do
     name { 'スーツ' }
     text { Faker::Lorem.sentence }
-    category_id { 7 }
-    status_id { 7 }
-    prefecture_id { 7 }
-    shipping_id { 7 }
-    shipping_day_id { 7 }
-    price { 777 }
+    category_id { 1 }
+    status_id { 1 }
+    prefecture_id { 1 }
+    shipping_id { 1 }
+    shipping_day_id {  }
+    price { 123 }
     association :user
 
     after(:build) do |item|
