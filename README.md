@@ -25,10 +25,10 @@
 | price           | integer    | null: false                    |
 | text            | text       | null: false                    |
 | status_id       | integer    | null: false                    |
-| shipping_day_id | integer    | null: false                    |
+| shipping_id     | integer    | null: false                    |
 | prefecture_id   | integer    | null: false                    |
 | category_id     | integer    | null: false                    |
-| bearer_id       | integer    | null: false                    |
+| shipping_day_id | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
 
 ### Association
