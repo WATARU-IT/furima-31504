@@ -7,7 +7,5 @@ FactoryBot.define do
     prefecture_id { 2 }
     token { 'tok_abcdefghijk00000000000000000' }
     building_name { '六本木ヒルズ' }
-    user_id { 1 }
-    item_id { 1 }
   end
 end

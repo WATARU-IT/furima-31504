@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe OrderBuyer, type: :model do
   describe 'create' do
     before do
-      @order_buyer = FactoryBot.build(:order_buyer)
+      item = FactoryBot.create(:item)
+      user = FactoryBot.create(:user)
+      @order_buyer = FactoryBot.build(:order_buyer, user_id:user.id, item_id:item.id)
       sleep 0.1
     end
 
@@ -59,6 +61,25 @@ RSpec.describe OrderBuyer, type: :model do
         @order_buyer.phone_number = '1234567890123'
         @order_buyer.valid?
         expect(@order_buyer.errors.full_messages).to include('Phone number はハイフンなし、 かつ１２桁以上では登録できません')
+      end
+
+
+      it 'phone_numberは英字のみでは登録できないこと' do
+        @order_buyer.phone_number = 'abcdefghijkl'
+        @order_buyer.valid?
+        expect(@order_buyer.errors.full_messages).to include('Phone number 半角数字以外では登録できません')
+      end
+
+      it 'phone_numberは英数字混合では登録できないこと' do
+        @order_buyer.phone_number = '123456abcdef'
+        @order_buyer.valid?
+        expect(@order_buyer.errors.full_messages).to include('Phone number 半角数字以外では登録できません')
+      end
+
+      it 'phone_numberは全角数字では登録できないこと' do
+        @order_buyer.phone_number = '１２３４５６７８９０１２'
+        @order_buyer.valid?
+        expect(@order_buyer.errors.full_messages).to include('Phone number 半角数字以外では登録できません')
       end
 
       it 'prefecture_idがなければ登録できないこと' do

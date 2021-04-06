@@ -7,6 +7,7 @@ class OrderBuyer
     validates :city
     validates :address
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'はハイフンなし、 かつ１２桁以上では登録できません' }
+    validates :phone_number, format: { with: /\A[0-9]+\z/i, message: '半角数字以外では登録できません' }
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :token
     validates :user_id
