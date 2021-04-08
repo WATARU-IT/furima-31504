@@ -25,6 +25,7 @@
       </span>
     </div>
 
+    <%#環境変数を設定%>
     <% if user_signed_in? %>
       <% unless @item.order.present? %>
         <% if current_user.id == @item.user_id  %>
